@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <table class="table">
+      <tr>
+        <th>名前</th>
+        <th>メールアドレス</th>
+        <th>年齢</th>
+        <th>電話番号</th>
+        <th>更新日</th>
+      </tr>
+      <% for (var i in content){ %>
+      <tr>
+        <% var obj = content[i] %>
+        <td class="name"><%= obj.name %></td>
+        <td class="email"><%= obj. email%></td>
+        <td class="age"><%= obj. age%></td>
+        <td class="telephone"><%= obj.telephone %></td>
+        <td class="created_at"><%= obj.created_at %></td>
+      </tr>
+
+      <% } %>
+    </table>
+  </body>
+</html>
