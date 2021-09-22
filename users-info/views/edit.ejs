@@ -1,0 +1,53 @@
+<%-include('./header') %>
+<script>
+  /*DELETE Javascript*/
+  async function deleteUsers(uid) {
+    const res = await fetch("http://localhost:3000/users/" + uid, {
+      method: "DELETE",
+    });
+    location.href = "/users";
+  }
+  /*PUT Javascript*/
+  async function updateUsers(uid) {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const age = document.getElementById("age").value;
+    const telephone = document.getElementById("telephone").value;
+
+    /*request body*/
+    const body = {
+      name: name,
+      email: email,
+      age: age,
+      telephone: telephone,
+    };
+
+    const res = await fetch("http://localhost:3000/users/" + uid, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    location.href = "/users";
+  }
+</script>
+<label for="id">ID</label>
+<input type="text" name="id" id="id" value="<%= mydata.id %>" disabled />
+<label for="name">名前</label>
+<input type="text" name="name" id="name" value="<%= mydata.name %>" />
+<label for="email">メールアドレス</label>
+<input type="text" name="email" id="email" value="<%= mydata.email %>" />
+<label for="age">年齢</label>
+<input type="number" name="age" id="age" value="<%= mydata.age %>" />
+<label for="telephone">電話番号</label>
+<input
+  type="number"
+  name="telephone"
+  id="telephone"
+  value="<%= mydata.telephone %>"
+/>
+
+<input type="button" value="保存" onclick="updateUsers(`<%=mydata.id%>`)" />
+
+<button class="cancel-btn" onclick="location.href='/users'">キャンセル</button>
+<input type="button" value="削除" onclick="deleteUsers(`<%=mydata.id%>`)" />
+<%-include('./footer') %>

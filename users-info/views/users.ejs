@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
-  <body>
-    <table class="table">
+<%- include('./header')%>
+      <table class="table">
       <tr>
         <th>名前</th>
         <th>メールアドレス</th>
@@ -21,9 +15,12 @@
         <td class="age"><%= obj. age%></td>
         <td class="telephone"><%= obj.telephone %></td>
         <td class="created_at"><%= obj.created_at %></td>
+        <td><a href="/users/edit/<%= obj.id %>">編集</a></td>
+        <td><a href="/users/edit/<%= obj.id %>">削除</a></td>        
       </tr>
 
       <% } %>
     </table>
+    <%- include('./footer')%>
   </body>
 </html>

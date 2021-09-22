@@ -1,0 +1,14 @@
+<%- include('./header')%>
+<form method="post" action="/users">
+  <label for="name">名前</label>
+  <input type="text" name="name" id="name" />
+  <label for="email">メールアドレス</label>
+  <input type="text" name="email" id="email" />
+  <label for="age">年齢</label>
+  <input type="number" name="age" id="age" />
+  <label for="telephone">電話番号</label>
+  <input type="number" name="telephone" id="telephone" />
+  <button class="add-btn">保存</button>
+  <button class="cancel-btn">キャンセル</button>
+</form>
+<%- include('./footer')%>
