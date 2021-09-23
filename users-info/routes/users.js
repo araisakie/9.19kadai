@@ -27,8 +27,8 @@ router.get("/api/v1/:id", (req, res) => {
   try {
     const { id } = req.params;
     db.serialize(() => {
-      db.get(`select * from users where id = "${id}"`, (err, row) =>
-        res.status(200).json({ Database: row })
+      db.get(`select * from users where id = ?`, [id], (err, row) =>
+        res.status(200).json({ searchData: row })
       );
     });
   } catch (e) {
@@ -58,7 +58,7 @@ router.delete("/api/v1/:id", (req, res) => {
   try {
     const { id } = req.params;
     db.serialize(() => {
-      db.delete(`delete from users where id = "${id}"`, () =>
+      db.delete(`delete from users where id = ?`, [id], () =>
         res.status(200).json({ message: "削除できました" })
       );
     });

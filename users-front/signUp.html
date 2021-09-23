@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="users.css" />
+    <title>Users Info</title>
+  </head>
+  <body>
+    <header id="header" class="wrapper">
+      <h1 class="site-title">
+        <a href="users.html">HOME</a>
+      </h1>
+      <nav>
+        <ul>
+          <li><a href="users.html">HOME</a></li>
+          <li><a href="#">新規登録</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="signUp">
+      <label for="name">名前</label>
+      <input type="text" name="name" id="name" value="" />
+      <label for="email">メールアドレス</label>
+      <input type="text" name="email" id="email" value="" />
+      <label for="age">年齢</label>
+      <input type="text" name="age" id="age" value="" /><br />
+      <label for="telephone">電話番号</label>
+      <input type="text" name="telephone" id="telephone" value="" />
+      <label for="created_at">作成日</label>
+      <input type="text" name="created_at" id="created_at" value="" disabled />
+
+      <button class="post-btn" onclick="">保存</button>
+      <button class="cancel-btn" onclick="">キャンセル</button>
+      <button class="delete-btn" onclick="">削除</button>
+    </main>
+    <footer>
+      <p>&copy;sakie.com</p>
+    </footer>
+  </body>
+</html>
