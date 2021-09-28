@@ -61,17 +61,20 @@ li {
 main input {
   width: 300px;
   padding: 4px 10px;
-  color: darkgrey;
+  /* color: darkgrey; */
   margin: 5px;
 }
 main .table {
   margin: 20px auto 50px;
 }
 main .table th {
-  margin: 10px;
-  display: inline-block;
+  margin: 50px 0;
+  text-align: left;
 }
-
+main .table td {
+  text-align: left;
+  width: 150px;
+}
 .signUp {
   text-align: left;
 }
