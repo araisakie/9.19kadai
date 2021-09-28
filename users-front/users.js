@@ -3,10 +3,10 @@
 const url = "http://localhost:3000/api/v1";
 
 async function getUsersData() {
+  const list = document.getElementById("js-tbody");
   try {
     const res = await fetch(`${url}/users`);
     const users = await res.json();
-    const list = document.getElementById("js-tbody");
 
     users.userData.forEach((user) => {
       const addHtml = `
@@ -24,6 +24,6 @@ async function getUsersData() {
   }
 }
 
-window.onload = () => {
+onload = () => {
   getUsersData();
 };
