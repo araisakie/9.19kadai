@@ -24,9 +24,10 @@ router.get("/api/v1/users", (req, res) => {
 
 /* idに紐づいたAPI(取得) */
 router.get("/api/v1/users/:id", (req, res) => {
+  // ここも
+  const { id } = req.params;
+
   try {
-    const { id } = req.params;
-    // ここも
     db.serialize(() => {
       db.get(`select * from users where id = ?`, [id], (err, row) =>
         res.status(200).json({ searchData: row })
@@ -39,14 +40,46 @@ router.get("/api/v1/users/:id", (req, res) => {
 
 /* 新規登録 */
 router.post("/api/v1/users", (req, res) => {
-  try {
-    const { name, email, age, telephone } = req.body;
-    // 空やったら全部弾く
-    // 名前(20文字), email(@がなかったら弾く) age(3桁) 電話番号(11, 10)
+  const { name, email, age, telephone } = req.body;
+  const emailError = email.match(/@/);
 
-    // if(名前 > 20){
-    //    res.status(400?).json({message: 名前は20文字以下です})
-    //}
+  if (!name) {
+    return res.status(400).json({ message: "名前が入力されていません" });
+  }
+
+  if (name.length >= 20) {
+    return res.status(400).json({ message: "名前は20文字以下です" });
+  }
+
+  if (!email) {
+    return res
+      .status(400)
+      .json({ message: "メールアドレスが入力されていません" });
+  }
+
+  if (emailError === null) {
+    return res
+      .status(400)
+      .json({ message: "メールアドレスが正しくありません" });
+  }
+
+  if (!age) {
+    return res.status(400).json({ message: "年齢が入力されていません" });
+  }
+
+  if (age > 999) {
+    return res.status(400).json({ message: "年齢は３桁までです" });
+  }
+
+  if (!telephone) {
+    return res.status(400).json({ message: "電話番号が入力されていません" });
+  }
+
+  if (telephone.length > 11 || telephone.length < 10) {
+    return res.status(400).json({ message: "電話番号が正しくありません" });
+  }
+
+  try {
     db.serialize(() => {
       db.exec(
         `insert into users (name, email, age, telephone) values("${name}","${email}","${age}","${telephone}")`,
@@ -63,9 +96,9 @@ router.post("/api/v1/users", (req, res) => {
 
 /* 削除 */
 router.delete("/api/v1/users/:id", (req, res) => {
+  // idがあるかチェックする
+  const { id } = req.params;
   try {
-    const { id } = req.params;
-    // idがあるかチェックする
     db.serialize(() => {
       db.exec(`delete from users where id = ${id}`, () =>
         res.status(200).json({ message: "削除できました" })
