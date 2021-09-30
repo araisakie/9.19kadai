@@ -1,5 +1,3 @@
 "use strict";
 
-document.getElementById("go-back").addEventListener("click", () => {
-  history.back();
-});
+const cancel = () => history.back();

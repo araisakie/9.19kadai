@@ -5,6 +5,7 @@ const db = new sqlite3.Database("users.db");
 
 /* ホーム画面読み込み */
 router.get("/api/v1/users", (req, res) => {
+  const db = new sqlite3.Database("users.db");
   try {
     db.serialize(() => {
       db.all(
@@ -19,11 +20,14 @@ router.get("/api/v1/users", (req, res) => {
       errorMessage: "データーベースのアクセスに失敗しました",
       error: e,
     });
+  } finally {
+    db.close();
   }
 });
 
 /* idに紐づいたAPI(取得) */
 router.get("/api/v1/users/:id", (req, res) => {
+  const db = new sqlite3.Database("users.db");
   // ここも
   const { id } = req.params;
 
@@ -35,11 +39,14 @@ router.get("/api/v1/users/:id", (req, res) => {
     });
   } catch (e) {
     res.status(500).json({ errorMessage: "取得に失敗しました", error: e });
+  } finally {
+    db.close();
   }
 });
 
 /* 新規登録 */
 router.post("/api/v1/users", (req, res) => {
+  const db = new sqlite3.Database("users.db");
   const { name, email, age, telephone } = req.body;
   const emailError = email.match(/@/);
 
@@ -90,11 +97,14 @@ router.post("/api/v1/users", (req, res) => {
     res
       .status(500)
       .json({ errorMessage: "ユーザーの登録に失敗しました", error: e });
+  } finally {
+    db.close();
   }
 });
 
 /* 削除 */
 router.delete("/api/v1/users/:id", (req, res) => {
+  const db = new sqlite3.Database("users.db");
   // idがあるかチェックする
   const { id } = req.params;
   try {
@@ -106,6 +116,8 @@ router.delete("/api/v1/users/:id", (req, res) => {
   } catch (e) {
     res.status(500).json({ errorMessage: "削除できませんでした", error: e });
     console.error(e);
+  } finally {
+    db.close();
   }
 });
 
