@@ -57,7 +57,7 @@ router.post("/api/v1/users", (req, res) => {
       .json({ message: "メールアドレスが入力されていません" });
   }
 
-  if (emailError === null) {
+  if (!emailError) {
     return res
       .status(400)
       .json({ message: "メールアドレスが正しくありません" });
@@ -67,7 +67,7 @@ router.post("/api/v1/users", (req, res) => {
     return res.status(400).json({ message: "年齢が入力されていません" });
   }
 
-  if (age > 999) {
+  if (String(age).length > 3) {
     return res.status(400).json({ message: "年齢は３桁までです" });
   }
 
@@ -90,7 +90,6 @@ router.post("/api/v1/users", (req, res) => {
     res
       .status(500)
       .json({ errorMessage: "ユーザーの登録に失敗しました", error: e });
-    console.error(e);
   }
 });
 

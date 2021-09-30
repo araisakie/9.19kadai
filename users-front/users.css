@@ -75,8 +75,10 @@ main .table td {
   text-align: left;
   width: 150px;
 }
-.signUp {
-  text-align: left;
+.signUp label {
+  width: 100px;
+  margin-bottom: 20px;
+  display: inline-block;
 }
 
 .signUp input {

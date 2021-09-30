@@ -15,6 +15,7 @@ async function getUsersData() {
         <td class="email">${user.email}</td>
         <td class="age">${user.age}</td>
         <td class="telephone">${user.telephone}</td>
+        <td><button class="delete-btn" onclick="">削除</button></td>
       </tr>
       `;
       list.insertAdjacentHTML("beforeend", addHtml);
