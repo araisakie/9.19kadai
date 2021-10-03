@@ -47,43 +47,46 @@ router.get("/api/v1/users/:id", (req, res) => {
 /* 新規登録 */
 router.post("/api/v1/users", (req, res) => {
   const db = new sqlite3.Database("users.db");
+
   const { name, email, age, telephone } = req.body;
   const emailError = email.match(/@/);
 
   if (!name) {
-    return res.status(400).json({ message: "名前が入力されていません" });
+    return res.status(400).json({ errorMessage: "名前が入力されていません" });
   }
 
   if (name.length >= 20) {
-    return res.status(400).json({ message: "名前は20文字以下です" });
+    return res.status(400).json({ errorMessage: "名前は20文字以下です" });
   }
 
   if (!email) {
     return res
       .status(400)
-      .json({ message: "メールアドレスが入力されていません" });
+      .json({ errorMessage: "メールアドレスが入力されていません" });
   }
 
   if (!emailError) {
     return res
       .status(400)
-      .json({ message: "メールアドレスが正しくありません" });
+      .json({ errorMessage: "メールアドレスが正しくありません" });
   }
 
   if (!age) {
-    return res.status(400).json({ message: "年齢が入力されていません" });
+    return res.status(400).json({ errorMessage: "年齢が入力されていません" });
   }
 
   if (String(age).length > 3) {
-    return res.status(400).json({ message: "年齢は３桁までです" });
+    return res.status(400).json({ errorMessage: "年齢は３桁までです" });
   }
 
   if (!telephone) {
-    return res.status(400).json({ message: "電話番号が入力されていません" });
+    return res
+      .status(400)
+      .json({ errorMessage: "電話番号が入力されていません" });
   }
 
   if (telephone.length > 11 || telephone.length < 10) {
-    return res.status(400).json({ message: "電話番号が正しくありません" });
+    return res.status(400).json({ errorMessage: "電話番号が正しくありません" });
   }
 
   try {
