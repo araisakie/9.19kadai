@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="users.css" />
+    <script src="post.js"></script>
     <title>Users Info</title>
   </head>
   <body>
@@ -18,7 +19,11 @@
         </ul>
       </nav>
     </header>
-    <main class="signUp">
+    <main
+      class="signUp"
+      action="http://localhost:3000/api/v1/users"
+      method="POST"
+    >
       <div>
         <label for="name">名前</label>
         <input type="text" name="name" id="name" value="" />
@@ -36,12 +41,12 @@
         <input type="text" name="telephone" id="telephone" value="" />
       </div>
 
-      <button class="post-btn" onclick="">保存</button>
-      <button class="cancel-btn" onclick="cancel()">キャンセル</button>
+      <button class="post-btn" id="post" onclick="post()">保存</button>
+      <button class="cancel-btn" onclick="history.back()">キャンセル</button>
+      <div id="box"></div>
     </main>
     <footer>
       <p>&copy;sakie.com</p>
     </footer>
-    <script src="post.js"></script>
   </body>
 </html>
