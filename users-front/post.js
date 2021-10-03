@@ -25,11 +25,11 @@ async function post() {
     const resResult = await res.json();
 
     /* エラーor登録完了のダイアログを表示する */
-    if (resResult.errorMessage) {
-      alert(resResult.errorMessage);
-    } else {
+    if (resResult.message) {
       alert(resResult.message);
-      history.back();
+      location.href = "users.html";
+    } else {
+      alert(resResult.errorMessage);
     }
   } catch (e) {
     console.error("error:", e.errorMessage);
