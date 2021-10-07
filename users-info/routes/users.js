@@ -124,4 +124,6 @@ router.delete("/api/v1/users/:id", (req, res) => {
   }
 });
 
+// edit API(GETでidに紐付いたもの)
+
 module.exports = router;
