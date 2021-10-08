@@ -4,7 +4,7 @@ const url = "http://localhost:3000/api/v1";
 
 async function getUsersData() {
   const list = document.getElementById("js-tbody");
-  const tr = document.getElementById("tr");
+  const tr = document.getElementById("first-tr");
   try {
     const res = await fetch(`${url}/users`);
     const users = await res.json();

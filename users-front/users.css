@@ -73,6 +73,7 @@ main .table td {
 main .table .nodata p {
   font-size: 30px;
   font-weight: bold;
+  color: red;
 }
 
 .signUp label {
