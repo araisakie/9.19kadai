@@ -4,12 +4,15 @@ const url = "http://localhost:3000/api/v1";
 
 async function getUsersData() {
   const list = document.getElementById("js-tbody");
+  const tr = document.getElementById("tr");
   try {
     const res = await fetch(`${url}/users`);
     const users = await res.json();
+    console.log(users);
 
-    users.userData.forEach((user) => {
-      const addHtml = `
+    if (users.userData > "") {
+      users.userData.forEach((user) => {
+        const addHtml = `
       <tr>
         <td class="name">${user.name}</td>
         <td class="email">${user.email}</td>
@@ -18,8 +21,17 @@ async function getUsersData() {
         <td><button class="delete-btn" onclick="deleteId(${user.id})">削除</button></td>
       </tr>
       `;
-      list.insertAdjacentHTML("beforeend", addHtml);
-    });
+        list.insertAdjacentHTML("beforeend", addHtml);
+      });
+    } else {
+      tr.style.display = "none";
+      const noData = `
+      <div class="nodata">
+        <p>表示するデータがありません</p>
+      </div>
+      `;
+      list.insertAdjacentHTML("beforeend", noData);
+    }
   } catch (e) {
     console.error("error:", e.message);
   }
