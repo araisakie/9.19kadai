@@ -7,6 +7,7 @@ async function deleteId(id) {
     });
     const resData = await res.json();
     alert(resData.message);
+    console.log(resData);
 
     location.href = "users.html";
   } catch (e) {

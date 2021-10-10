@@ -76,16 +76,19 @@ main .table .nodata p {
   color: red;
 }
 
-.signUp label {
+.signUp label,
+.edit label {
   width: 100px;
   margin-bottom: 20px;
   display: inline-block;
 }
 
-.signUp input {
-  width: 200px;
+.signUp input,
+.edit input {
+  width: 300px;
 }
 
-.signUp button {
+.signUp button,
+.edit button {
   width: 100px;
 }

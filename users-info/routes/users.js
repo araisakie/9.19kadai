@@ -85,7 +85,7 @@ router.post("/api/v1/users", (req, res) => {
       .json({ errorMessage: "電話番号が入力されていません" });
   }
 
-  if (telephone.length > 11 || telephone.length < 10) {
+  if (telephone.length < 10 || telephone.length > 11) {
     return res.status(400).json({ errorMessage: "電話番号が正しくありません" });
   }
 
@@ -124,6 +124,6 @@ router.delete("/api/v1/users/:id", (req, res) => {
   }
 });
 
-// edit API(GETでidに紐付いたもの)
+// edit API(PUTでidに紐付いたもの)更新
 
 module.exports = router;

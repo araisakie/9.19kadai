@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="users.css" />
-    <script src="post.js"></script>
+    <!-- <script src="users.js"></script> -->
+    <!-- <script src="delete.js"></script> -->
+    <script src="edit.js"></script>
     <title>Users Info</title>
   </head>
   <body>
@@ -15,53 +17,29 @@
       <nav>
         <ul>
           <li><a href="users.html">HOME</a></li>
-          <li><a href="#">新規登録</a></li>
+          <li><a href="signUp.html">新規登録</a></li>
         </ul>
       </nav>
     </header>
-    <main class="signUp">
+    <main class="edit">
       <div>
         <label for="name">名前</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value=""
-          placeholder="名前を入力してください"
-        />
+        <input type="text" name="name" id="name" value="" />
       </div>
       <div>
         <label for="email">メールアドレス</label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          value=""
-          placeholder="メールアドレスを入力してください"
-        />
+        <input type="text" name="email" id="email" value="" />
       </div>
       <div>
         <label for="age">年齢</label>
-        <input
-          type="text"
-          name="age"
-          id="age"
-          value=""
-          placeholder="年齢を入力してください"
-        />
+        <input type="text" name="age" id="age" value="" />
       </div>
       <div>
         <label for="telephone">電話番号</label>
-        <input
-          type="text"
-          name="telephone"
-          id="telephone"
-          value=""
-          placeholder="電話番号を入力してください"
-        />
+        <input type="text" name="telephone" id="telephone" value="" />
       </div>
 
-      <button class="post-btn" onclick="post()">保存</button>
+      <button class="update-btn" onclick="update()">更新</button>
       <button class="cancel-btn" onclick="history.back()">キャンセル</button>
     </main>
     <footer>
