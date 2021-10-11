@@ -125,5 +125,24 @@ router.delete("/api/v1/users/:id", (req, res) => {
 });
 
 // edit API(PUTでidに紐付いたもの)更新
+router.put("/api/v1/users/:id", (req, res) => {
+  const db = new sqlite3.Database("users.db");
+  const { id } = req.params;
+  const { name, email, age, telephone } = req.body;
+  try {
+    db.serialize(() => {
+      db.exec(
+        `update users set name="${name}",email="${email}",age="${age}",telephone="${telephone}" where id="${id}"`,
+        () => {
+          res.status(200).json({ message: "更新ができました" });
+        }
+      );
+    });
+  } catch (e) {
+    res.status(500).json({ errorMessage: "更新できませんでした", error: e });
+  } finally {
+    db.close();
+  }
+});
 
 module.exports = router;
