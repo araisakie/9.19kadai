@@ -28,7 +28,6 @@ router.get("/api/v1/users", (req, res) => {
 /* idに紐づいたAPI(取得) */
 router.get("/api/v1/users/:id", (req, res) => {
   const db = new sqlite3.Database("users.db");
-  // ここも
   const { id } = req.params;
 
   try {
@@ -108,7 +107,6 @@ router.post("/api/v1/users", (req, res) => {
 /* 削除 */
 router.delete("/api/v1/users/:id", (req, res) => {
   const db = new sqlite3.Database("users.db");
-  // idがあるかチェックする
   const { id } = req.params;
   try {
     db.serialize(() => {
@@ -124,7 +122,7 @@ router.delete("/api/v1/users/:id", (req, res) => {
   }
 });
 
-// edit API(PUTでidに紐付いたもの)更新
+/* 更新 */
 router.put("/api/v1/users/:id", (req, res) => {
   const db = new sqlite3.Database("users.db");
   const { id } = req.params;

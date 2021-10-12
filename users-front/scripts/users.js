@@ -1,7 +1,5 @@
 "use strict";
 
-const url = "http://localhost:3000/api/v1";
-
 async function getUsersData() {
   const list = document.getElementById("js-tbody");
   const tr = document.getElementById("first-tr");
