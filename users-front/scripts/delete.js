@@ -6,8 +6,7 @@ async function deleteId(id) {
       method: "DELETE",
     });
     const resData = await res.json();
-    alert(resData.message);
-    console.log(resData);
+    // alert(resData.message);
 
     location.href = "users.html";
   } catch (e) {

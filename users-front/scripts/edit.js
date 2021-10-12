@@ -1,5 +1,4 @@
 "use strict";
-
 const url = "http://localhost:3000/api/v1";
 
 async function edit(id) {
@@ -20,6 +19,7 @@ async function edit(id) {
 
 onload = () => {
   const param = location.search;
+
   if (param) {
     const id = param.slice(4);
     edit(id);

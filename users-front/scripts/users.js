@@ -8,7 +8,6 @@ async function getUsersData() {
   try {
     const res = await fetch(`${url}/users`);
     const users = await res.json();
-    // console.log(users);
 
     if (users.userData.length > 0) {
       users.userData.forEach((user) => {
@@ -18,7 +17,7 @@ async function getUsersData() {
         <td class="email">${user.email}</td>
         <td class="age">${user.age}</td>
         <td class="telephone">${user.telephone}</td>
-        <td><a href="edit.html?id=${user.id}"><button class="edit-btn">編集</button></a></td>
+        <td><a href="signUp.html?id=${user.id}"><button class="edit-btn">編集</button></a></td>
         <td><button class="delete-btn" onclick="deleteId(${user.id})">削除</button></td>
       </tr>
       `;
