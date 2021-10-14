@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const sqlite3 = require("sqlite3");
+const validator = require("../middleware/validator");
 const db = new sqlite3.Database("users.db");
 
 /* ホーム画面読み込み */
@@ -28,7 +29,6 @@ router.get("/api/v1/users", (req, res) => {
 /* idに紐づいたAPI(取得) */
 router.get("/api/v1/users/:id", (req, res) => {
   const db = new sqlite3.Database("users.db");
-  const { id } = req.params;
 
   try {
     db.serialize(() => {
@@ -44,49 +44,10 @@ router.get("/api/v1/users/:id", (req, res) => {
 });
 
 /* 新規登録 */
-router.post("/api/v1/users", (req, res) => {
+router.post("/api/v1/users", validator, (req, res) => {
   const db = new sqlite3.Database("users.db");
 
   const { name, email, age, telephone } = req.body;
-  const emailError = email.match(/@/);
-
-  if (!name) {
-    return res.status(400).json({ errorMessage: "名前が入力されていません" });
-  }
-
-  if (name.length >= 20) {
-    return res.status(400).json({ errorMessage: "名前は20文字以下です" });
-  }
-
-  if (!email) {
-    return res
-      .status(400)
-      .json({ errorMessage: "メールアドレスが入力されていません" });
-  }
-
-  if (!emailError) {
-    return res
-      .status(400)
-      .json({ errorMessage: "メールアドレスが正しくありません" });
-  }
-
-  if (!age) {
-    return res.status(400).json({ errorMessage: "年齢が入力されていません" });
-  }
-
-  if (String(age).length > 3) {
-    return res.status(400).json({ errorMessage: "年齢は３桁までです" });
-  }
-
-  if (!telephone) {
-    return res
-      .status(400)
-      .json({ errorMessage: "電話番号が入力されていません" });
-  }
-
-  if (telephone.length < 10 || telephone.length > 11) {
-    return res.status(400).json({ errorMessage: "電話番号が正しくありません" });
-  }
 
   try {
     db.serialize(() => {
@@ -123,49 +84,10 @@ router.delete("/api/v1/users/:id", (req, res) => {
 });
 
 /* 更新 */
-router.put("/api/v1/users/:id", (req, res) => {
+router.put("/api/v1/users/:id", validator, (req, res) => {
   const db = new sqlite3.Database("users.db");
-  const { id } = req.params;
+
   const { name, email, age, telephone } = req.body;
-  const emailError = email.match(/@/);
-
-  if (!name) {
-    return res.status(400).json({ errorMessage: "名前が入力されていません" });
-  }
-
-  if (name.length >= 20) {
-    return res.status(400).json({ errorMessage: "名前は20文字以下です" });
-  }
-
-  if (!email) {
-    return res
-      .status(400)
-      .json({ errorMessage: "メールアドレスが入力されていません" });
-  }
-
-  if (!emailError) {
-    return res
-      .status(400)
-      .json({ errorMessage: "メールアドレスが正しくありません" });
-  }
-
-  if (!age) {
-    return res.status(400).json({ errorMessage: "年齢が入力されていません" });
-  }
-
-  if (String(age).length > 3) {
-    return res.status(400).json({ errorMessage: "年齢は３桁までです" });
-  }
-
-  if (!telephone) {
-    return res
-      .status(400)
-      .json({ errorMessage: "電話番号が入力されていません" });
-  }
-
-  if (telephone.length < 10 || telephone.length > 11) {
-    return res.status(400).json({ errorMessage: "電話番号が正しくありません" });
-  }
 
   try {
     db.serialize(() => {
