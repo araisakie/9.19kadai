@@ -1,11 +1,13 @@
 @charset "UTF-8";
 
 body {
+  font-family: "Londrina Solid", cursive;
   color: #333;
-  font-size: 0.9rem;
+  font-size: 14.5px;
   text-align: center;
   width: 80%;
   margin: 0 auto;
+  background: beige;
 }
 a {
   text-decoration: none;
@@ -13,82 +15,145 @@ a {
 li {
   list-style: none;
 }
-.site-title {
-  width: 120px;
-  line-height: 1px;
-  padding: 10px 0;
+#header .site-title a,
+#header li,
+#header li a,
+main h1 {
+  text-shadow: 6px 4px 2px #ffd700;
 }
-.site-title a {
-  display: block;
-}
-.section-title {
-  display: inline-block;
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 60px;
-  border-bottom: solid 1px #383e45;
-}
-.content-title {
-  font-size: 1rem;
-  margin: 10px 0;
-}
-
 #header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px auto;
+  margin: 20px auto 0;
+}
+#header .site-title {
+  line-height: 1px;
+  font-size: 50px;
+  color: dodgerblue;
+}
+#header .site-title a {
+  color: dodgerblue;
 }
 #header ul {
   display: flex;
   padding: 10px 0;
 }
+#header li,
+#header li a {
+  color: darkcyan;
+}
 #header li {
   margin-left: 30px;
-}
-#header li a {
-  color: #24292e;
+  font-size: 28px;
 }
 #header li a:hover {
   opacity: 0.7;
 }
-main input {
-  width: 300px;
-  padding: 4px 10px;
-  /* color: darkgrey; */
-  margin: 5px;
+main {
+  height: 500px;
+}
+main h1 {
+  font-size: 38px;
+  color: darkgoldenrod;
 }
 main .table {
   margin: 20px auto 50px;
+}
+main .table .users-list {
+  width: 100%;
+  height: 350px;
+  padding: 0 20px;
+  overflow-y: scroll;
+  display: block;
 }
 main .table th {
   margin: 50px 0;
   text-align: left;
 }
+main .table tr {
+  display: block;
+  margin-bottom: 20px;
+}
 main .table td {
   text-align: left;
-  width: 150px;
+  width: 180px;
+  display: inline-block;
 }
-
 main .table .nodata p {
-  font-size: 30px;
-  font-weight: bold;
-  color: red;
+  font-size: 40px;
 }
-
-.signUp label,
-.edit label {
+main .table .nodata p span {
+  color: crimson;
+}
+main .list-title {
+  display: flex;
+  margin: 0 173px;
+  font-weight: bold;
+  text-align: left;
+}
+main .list-title p {
+  width: 185px;
+}
+main .table td,
+.signUp input,
+main .list-title {
+  font-family: "M PLUS Rounded 1c";
+}
+main .table .editBtn,
+main .table .deleteBtn {
+  display: inline;
+  width: 100%;
+  margin: 5px;
+}
+main .table .editBtn button,
+main .table .deleteBtn button,
+.signUp .post-btn,
+.signUp .cancel-btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+main .table .editBtn button,
+.signUp .post-btn {
+  background: #fff100;
+  border-bottom: 4px solid #ccc100;
+}
+main .table .editBtn button:hover,
+.signUp .post-btn:hover {
+  margin-top: 3px;
+  border-bottom: 1.5px solid #ccc100;
+}
+main .table .deleteBtn button,
+.signUp .cancel-btn {
+  background: #cc0033;
+  color: #fff;
+  border-bottom: 4px solid #990000;
+}
+main .table .deleteBtn button:hover,
+.signUp .cancel-btn:hover {
+  margin-top: 3px;
+  border-bottom: 1.5px solid #990000;
+}
+.signUp input {
+  width: 300px;
+  padding: 4px 10px;
+  margin: 5px;
+}
+.signUp label {
   width: 100px;
   margin-bottom: 20px;
   display: inline-block;
 }
-
-.signUp input,
-.edit input {
-  width: 300px;
+.signUp .input-form {
+  padding: 110px 0;
 }
-
-.signUp button,
-.edit button {
+.signUp .post-btn,
+.signUp .cancel-btn {
   width: 100px;
+  margin: 0 7px;
+}
+footer p {
+  margin-top: 50px;
 }

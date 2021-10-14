@@ -3,7 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="./styles/users.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+      rel="stylesheet"
+    />
+
     <script src="./scripts/edit.js"></script>
     <script src="./scripts/users.js"></script>
     <script src="./scripts/delete.js"></script>
@@ -17,21 +28,21 @@
       </h1>
       <nav>
         <ul>
-          <li><a href="#">HOME</a></li>
-          <li><a href="signup.html">新規登録</a></li>
+          <li>HOME</li>
+          <li><a href="signup.html">SIGNUP</a></li>
         </ul>
       </nav>
     </header>
     <main>
+      <h1>USERS LIST</h1>
+      <div id="div" class="list-title">
+        <p>名前</p>
+        <p>メールアドレス</p>
+        <p>年齢</p>
+        <p>電話番号</p>
+      </div>
       <table id="table" class="table">
-        <tbody id="js-tbody">
-          <tr id="first-tr">
-            <th>名前</th>
-            <th>メールアドレス</th>
-            <th>年齢</th>
-            <th>電話番号</th>
-          </tr>
-        </tbody>
+        <tbody id="js-tbody" class="users-list"></tbody>
       </table>
     </main>
     <footer>
