@@ -15,7 +15,6 @@ a {
 li {
   list-style: none;
 }
-#header .site-title a,
 #header li,
 #header li a,
 main h1 {
@@ -26,14 +25,6 @@ main h1 {
   justify-content: space-between;
   align-items: center;
   margin: 20px auto 0;
-}
-#header .site-title {
-  line-height: 1px;
-  font-size: 50px;
-  color: dodgerblue;
-}
-#header .site-title a {
-  color: dodgerblue;
 }
 #header ul {
   display: flex;
@@ -82,9 +73,8 @@ main .table td {
 }
 main .table .nodata p {
   font-size: 40px;
-}
-main .table .nodata p span {
   color: crimson;
+  font-weight: bold;
 }
 main .list-title {
   display: flex;
@@ -118,23 +108,17 @@ main .table .deleteBtn button,
 main .table .editBtn button,
 .signUp .post-btn {
   background: #fff100;
-  border-bottom: 4px solid #ccc100;
 }
 main .table .editBtn button:hover,
-.signUp .post-btn:hover {
-  margin-top: 3px;
-  border-bottom: 1.5px solid #ccc100;
+.signUp .post-btn:hover,
+main .table .deleteBtn button:hover,
+.signUp .cancel-btn:hover {
+  opacity: 0.5;
 }
 main .table .deleteBtn button,
 .signUp .cancel-btn {
   background: #cc0033;
   color: #fff;
-  border-bottom: 4px solid #990000;
-}
-main .table .deleteBtn button:hover,
-.signUp .cancel-btn:hover {
-  margin-top: 3px;
-  border-bottom: 1.5px solid #990000;
 }
 .signUp input {
   width: 300px;
@@ -147,7 +131,7 @@ main .table .deleteBtn button:hover,
   display: inline-block;
 }
 .signUp .input-form {
-  padding: 110px 0;
+  padding: 50px 0;
 }
 .signUp .post-btn,
 .signUp .cancel-btn {

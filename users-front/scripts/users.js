@@ -25,7 +25,7 @@ async function getUsersData() {
       div.style.display = "none";
       const noData = `
       <div class="nodata">
-        <p>There is <span>no data</span> to display</p>
+        <p>表示できるデータがありません</p>
       </div>
       `;
       list.insertAdjacentHTML("beforeend", noData);
